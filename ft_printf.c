@@ -6,9 +6,11 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/19 20:51:34 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/19 20:53:20 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int ft_printf(const char *c, ...)
 {
