@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/22 12:26:21 by eberling         ###   ########.fr       */
+/*   Created: 2025/10/22 12:25:32 by eberling          #+#    #+#             */
+/*   Updated: 2025/10/22 12:25:44 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int ft_printf(const char *c, ...)
+int ft_contains(char c, char *set)
 {
-	int i;
-	int	vars_count;
-	char keys[] = "cspdiuxX";
-
-	i = 0;
-	vars_count = 0;
-	while (c[i])
-	{
-		if(c[i] == '%')
-		{
-			if(ft_contains(c[i + 1], keys))
-				vars_count++;
-		}
-	}
-
-	printf("counted %d numbers\n", vars_count);
+	while (*set)
+		if (c == *set++)
+			return (1);
+	return (0);
 }
