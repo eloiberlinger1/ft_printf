@@ -2,5 +2,7 @@
 
 int main()
 {
-    ft_printf("54654654");
+    ft_printf("5465%%%%%d4654");
+
+    return 1;
 }

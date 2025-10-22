@@ -6,9 +6,11 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:25:32 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/22 12:25:44 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/22 13:04:52 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 int ft_contains(char c, char *set)
 {
