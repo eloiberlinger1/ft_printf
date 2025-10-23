@@ -2,7 +2,7 @@
 
 int main()
 {
-    ft_printf("5465%d4654", 50);
+    ft_printf("0000%c0000", 'd');
 
     return 1;
 }
