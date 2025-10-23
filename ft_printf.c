@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/22 14:57:32 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/23 12:01:03 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 
 int ft_printf(const char *c, ...)
 {
-	int i;
-	int	vars_count;
+	va_list	args;
+	int		 i;
+	int		len_tt;
 	char keys[] = "cspdiuxX%";
 
 	i = 0;
-	vars_count = 0;
-
+	len_tt = 0;
 	while (c[i] != '\0')
 	{
 		if(c[i] == '%')
-			vars_count += ft_contains(c[i + 1], keys);
+			len_tt += ft_process(c[i++], args);
 		i++;
 	}
+
+	va_end(args);
 
 	return 0;
 }

@@ -30,4 +30,8 @@ fclean: clean
 
 re: fclean all
 
+test:
+	make re
+	cc main.c -L. ft_printf.a
+
 .PHONY : all clean fclean re

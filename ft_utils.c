@@ -6,16 +6,21 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:25:32 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/22 13:04:52 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/23 11:58:04 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_contains(char c, char *set)
+
+int ft_process(char s, va_list args)
 {
-	while (*set)
-		if (c == *set++)
-			return (1);
+
+	if(s == 'c')
+	{
+		char value = va_arg(args, char);
+		return (write(1, &value, 1));
+	}
+
 	return (0);
 }
