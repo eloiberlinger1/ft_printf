@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:25:32 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/26 09:50:01 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/26 09:56:16 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,19 @@ static int	process_int(int value)
 	return (ret);
 }
 
+static int	process_hex(va_list args)
+{
+	void	*value;
+	int		i;
+
+	i = 0;
+	value = va_arg(args, void *);
+
+}
+
 int	process(char s, va_list args)
 {
-	//char keys[] = "pxX%";
+	//char keys[] = "pxX";
 
 	if (s == 'c')
 		return (process_char(va_arg(args, int)));
@@ -55,5 +65,8 @@ int	process(char s, va_list args)
 		return (process_int(va_arg(args, int)));
 	else if(s == '%')
 		return (process_char('%'));
+	else if(s == 'p')
+		return (process_hex(args));
+		
 	return (0);
 }
