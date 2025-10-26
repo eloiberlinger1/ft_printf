@@ -7,6 +7,7 @@ C_FILES =  ft_printf.c ft_utils.c
 O_FILES = $(C_FILES:.c=.o)
 
 LIBFT_DIR = libft
+LIBFT_L = -L$(LIBFT_DIR) -lft
 LIBFT_A = $(LIBFT_DIR)/libft.a
 
 all: $(LIBFT_A) $(NAME)
@@ -32,6 +33,6 @@ re: fclean all
 
 test:
 	make re
-	cc main.c -L. ft_printf.a
+	$(CC) main.c -L. $(NAME) $(LIBFT_L)
 
 .PHONY : all clean fclean re
