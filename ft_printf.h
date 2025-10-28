@@ -6,21 +6,22 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:24:46 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/23 12:04:03 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/27 17:50:37 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
 # include "libft/libft.h"
+# include <stdarg.h>
+# include <stdint.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-int process(char s, va_list args);
-int ft_printf(const char *c, ...);
-
+int	process(char s, va_list args);
+int	ft_printf(const char *c, ...);
+int	process_hex(uintptr_t nbr, int maj);
 
 #endif

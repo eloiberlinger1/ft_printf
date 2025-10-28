@@ -1,8 +1,8 @@
-NAME = ft_printf.a
+NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wextra -Wall -Werror
 
-C_FILES =  ft_printf.c ft_utils.c
+C_FILES =  ft_printf.c ft_utils.c ft_printhex.c
 
 O_FILES = $(C_FILES:.c=.o)
 
@@ -14,6 +14,7 @@ all: $(LIBFT_A) $(NAME)
 
 $(LIBFT_A):
 	make -C $(LIBFT_DIR) all
+	make -C $(LIBFT_DIR) bonus
 
 $(NAME) : $(O_FILES)
 	ar rcs $(NAME) $(O_FILES)
