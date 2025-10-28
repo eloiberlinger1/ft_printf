@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/27 17:57:48 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:14:22 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_printf(const char *c, ...)
 	va_list	args;
 	int		i;
 	int		len_tt;
-	//int 	result;
+	int 	result;
 
 	i = 0;
 	len_tt = 0;
@@ -30,6 +30,10 @@ int	ft_printf(const char *c, ...)
 			len_tt = process(c[++i], args);
 		else
 			len_tt += write(1, &c[i], 1);
+		if (len_tt <= 0)
+			return (-1);
+		result += len_tt;
+		len_tt = 0;
 		i++;
 	}
 	va_end(args);

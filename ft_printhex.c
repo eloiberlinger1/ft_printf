@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 09:59:48 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/27 17:49:19 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:18:35 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,18 @@ static size_t	get_char_size(long long n)
 	return (c);
 }
 
+static int	ifzero(long long nbr)
+{
+	if(nbr == 0)
+	{
+		ft_putchar_fd('0', 1);
+		if (write(1, '0', 1) != 1)
+			return (-1);
+		return (1);
+	}
+	return (0);
+}
+
 int	process_hex(uintptr_t nbr, int maj)
 {
 	size_t		i;
@@ -45,11 +57,8 @@ int	process_hex(uintptr_t nbr, int maj)
 	if (maj == 1)
 		ft_strlcpy(base, "0123456789ABCDEF", 16);
 	longnbr = (int)nbr;
-	if (longnbr == 0)
-	{
-		ft_putchar_fd('0', 1);
-		return (1);
-	}
+	if (ifzero(longnbr) == -1)
+		return (-1);
 	while (longnbr > 0)
 	{
 		buffer[i++] = base[longnbr % 16];
@@ -58,5 +67,5 @@ int	process_hex(uintptr_t nbr, int maj)
 	while (i-- > 0)
 		ft_putchar_fd(buffer[i], 1);
 	ret = get_char_size(longnbr);
-	return (1);
+	return (ret);
 }
