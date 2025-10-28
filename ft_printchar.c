@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 12:24:46 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 16:02:01 by eberling         ###   ########.fr       */
+/*   Created: 2025/10/28 16:01:21 by eberling          #+#    #+#             */
+/*   Updated: 2025/10/28 16:02:05 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <stdint.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+int	process_char(int value)
+{
+	return (write(1, &value, 1));
+}
 
-int	process_int(int value);
-int	process_hex(uintptr_t nbr, int maj);
-int	process_str(va_list args);
-int	process_char(int value);
+int	process_str(va_list args)
+{
+	char	*value;
 
-
-
-int	process(char s, va_list args);
-int	ft_printf(const char *c, ...);
+	value = va_arg(args, char *);
+	if (!value)
+		return (0);
+	return (ft_putstr_fd(value, 1));
+}
 
 
-#endif

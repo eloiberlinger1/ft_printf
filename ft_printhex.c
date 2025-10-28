@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 09:59:48 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 15:18:35 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:51:25 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ifzero(long long nbr)
 	if(nbr == 0)
 	{
 		ft_putchar_fd('0', 1);
-		if (write(1, '0', 1) != 1)
+		if (write(1, "0", 1) != 1)
 			return (-1);
 		return (1);
 	}
@@ -48,7 +48,7 @@ int	process_hex(uintptr_t nbr, int maj)
 {
 	size_t		i;
 	int			ret;
-	long long	longnbr;
+	uintptr_t	uninbr;
 	char		base[17];
 	char		buffer[11];
 
@@ -56,16 +56,16 @@ int	process_hex(uintptr_t nbr, int maj)
 	ft_strlcpy(base, "0123456789abcdef", 16);
 	if (maj == 1)
 		ft_strlcpy(base, "0123456789ABCDEF", 16);
-	longnbr = (int)nbr;
-	if (ifzero(longnbr) == -1)
+	uninbr = nbr;
+	if (ifzero(uninbr) == -1)
 		return (-1);
-	while (longnbr > 0)
+	while (uninbr > 0)
 	{
-		buffer[i++] = base[longnbr % 16];
-		longnbr /= 16;
+		buffer[i++] = base[uninbr % 16];
+		uninbr /= 16;
 	}
 	while (i-- > 0)
 		ft_putchar_fd(buffer[i], 1);
-	ret = get_char_size(longnbr);
+	ret = get_char_size(uninbr);
 	return (ret);
 }

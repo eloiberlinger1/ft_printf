@@ -6,42 +6,12 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:25:32 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 15:18:56 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:46:25 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	process_char(int value)
-{
-	return (write(1, &value, 1));
-}
-
-static int	process_str(va_list args)
-{
-	char	*value;
-	int		i;
-
-	i = 0;
-	value = va_arg(args, char *);
-	while (value[i])
-		write(1, &value[i++], 1);
-	return (i);
-}
-
-static int	process_int(int value)
-{
-	char	*temp;
-	int		ret;
-
-	temp = ft_itoa(value);
-	if (!temp)
-		return (0);
-	ft_putstr_fd(temp, 1);
-	ret = ft_strlen(temp);
-	free(temp);
-	return (ret);
-}
 
 int	process(char s, va_list args)
 {
@@ -63,8 +33,9 @@ int	process(char s, va_list args)
 			ft_putstr_fd("(nil)", 1);
 			return (5);
 		}
-		ft_putstr_fd("0x", 1);
-		return (process_hex((uintptr_t)(value), 0));
+		if(ft_putstr_fd("0x", 1) != 2)
+			return (-1);
+		return (process_hex((uintptr_t)(value), 0) + 2);
 	}
 	else if (s == 'x')
 	{

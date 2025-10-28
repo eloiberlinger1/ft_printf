@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 15:14:22 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:03:49 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_printf(const char *c, ...)
 	int		len_tt;
 	int 	result;
 
+	result = 0;
 	i = 0;
 	len_tt = 0;
 	if (c == NULL)

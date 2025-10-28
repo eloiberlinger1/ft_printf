@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printnbr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 12:24:46 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 16:02:01 by eberling         ###   ########.fr       */
+/*   Created: 2025/10/28 16:00:31 by eberling          #+#    #+#             */
+/*   Updated: 2025/10/28 16:01:43 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <stdint.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+int	process_int(int value)
+{
+	char	*temp;
+	int		ret;
 
-int	process_int(int value);
-int	process_hex(uintptr_t nbr, int maj);
-int	process_str(va_list args);
-int	process_char(int value);
-
-
-
-int	process(char s, va_list args);
-int	ft_printf(const char *c, ...);
-
-
-#endif
+	temp = ft_itoa(value);
+	if (!temp)
+		return (0);
+	ft_putstr_fd(temp, 1);
+	ret = ft_strlen(temp);
+	free(temp);
+	return (ret);
+}

@@ -1,8 +1,8 @@
 NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wextra -Wall -Werror
-
-C_FILES =  ft_printf.c ft_utils.c ft_printhex.c
+DFLAGS = -g
+C_FILES =  ft_printf.c ft_utils.c ft_printhex.c ft_printchar.c ft_printnbr.c
 
 O_FILES = $(C_FILES:.c=.o)
 
@@ -33,7 +33,7 @@ fclean: clean
 re: fclean all
 
 test:
-	make re
-	$(CC) main.c -L. $(NAME) $(LIBFT_L)
+	make -C $(LIBFT_DIR) CFLAGS="$(DFLAGS)" all
+	$(MAKE) CFLAGS="$(DFLAGS)" $(NAME)
 
 .PHONY : all clean fclean re
