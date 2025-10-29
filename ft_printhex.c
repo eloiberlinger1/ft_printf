@@ -6,66 +6,59 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 09:59:48 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 16:51:25 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/29 09:01:18 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	get_char_size(long long n)
-{
-	int	c;
-
-	c = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-	{
-		c++;
-		n = -n;
-	}
-	while (n > 0)
-	{
-		n /= 10;
-		c++;
-	}
-	return (c);
-}
-
-static int	ifzero(long long nbr)
-{
-	if(nbr == 0)
-	{
-		ft_putchar_fd('0', 1);
-		if (write(1, "0", 1) != 1)
-			return (-1);
-		return (1);
-	}
-	return (0);
-}
+// static int	ifzero(uintptr_t nbr)
+// {
+	
+// }
 
 int	process_hex(uintptr_t nbr, int maj)
 {
 	size_t		i;
 	int			ret;
 	uintptr_t	uninbr;
-	char		base[17];
-	char		buffer[11];
+	char		*base;
+	char		buffer[17];
 
-	i = 0;
-	ft_strlcpy(base, "0123456789abcdef", 16);
+	// initialize the base
+	base = "0123456789abcdef";
 	if (maj == 1)
-		ft_strlcpy(base, "0123456789ABCDEF", 16);
+		base = "0123456789ABCDEF";
+
+
+	ret = 0;
+	// display 0x
+	if (maj == 2) 
+        ret += write(1, "0x", 2);
+
+
+	// handle zero case
+	if(nbr == 0)
+	{
+		if (ft_putchar_fd('0', 1) != 1)
+			return (-1);
+		ret++;
+		return (ret);
+	}
+
+	// Conversion et Remplissage du buffer
+	i = 0;
 	uninbr = nbr;
-	if (ifzero(uninbr) == -1)
-		return (-1);
 	while (uninbr > 0)
 	{
 		buffer[i++] = base[uninbr % 16];
 		uninbr /= 16;
 	}
+
+	// Affichage (le nombre de chars imprimés = i)
+	ret += i;
 	while (i-- > 0)
-		ft_putchar_fd(buffer[i], 1);
-	ret = get_char_size(uninbr);
+		if (ft_putchar_fd(buffer[i], 1) != 1)
+			return (-1);
 	return (ret);
 }

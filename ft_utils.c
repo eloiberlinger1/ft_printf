@@ -6,12 +6,17 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:25:32 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 16:46:25 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/28 17:18:51 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+
+// int	pointer_entrypoint()
+// {
+	
+// }
 
 int	process(char s, va_list args)
 {
@@ -33,16 +38,14 @@ int	process(char s, va_list args)
 			ft_putstr_fd("(nil)", 1);
 			return (5);
 		}
-		if(ft_putstr_fd("0x", 1) != 2)
-			return (-1);
-		return (process_hex((uintptr_t)(value), 0) + 2);
+		return (process_hex((uintptr_t)(value), 2));
 	}
 	else if (s == 'x')
 	{
 		value = va_arg(args, void *);
 		return (process_hex((uintptr_t)(value), 0));
 	}
-	else if (s == 'x')
+	else if (s == 'X')
 	{
 		value = va_arg(args, void *);
 		return (process_hex((uintptr_t)(value), 1));
