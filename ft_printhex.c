@@ -6,38 +6,46 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 09:59:48 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/29 09:03:22 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/29 16:53:37 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// static int	ifzero(uintptr_t nbr)
-// {
-	
-// }
-
-int	process_hex(uintptr_t nbr, int maj)
+int	puthex(uintptr_t uninbr, int *ret, char *base)
 {
-	size_t		i;
+	int		i;
+	char	buffer[17];
+
+	i = 0;
+	while (uninbr > 0)
+	{
+		buffer[i++] = base[uninbr % 16];
+		uninbr /= 16;
+	}
+	*ret += i;
+	while (i-- > 0)
+		if (ft_putchar_fd(buffer[i], 1) != 1)
+			return (-1);
+	return (*ret);
+}
+
+/*
+format 0 = x
+format 1 = X
+format 2 = p
+*/
+int	process_hex(uintptr_t nbr, int format)
+{
 	int			ret;
-	uintptr_t	uninbr;
 	char		*base;
-	char		buffer[17];
 
-	// initialize the base
 	base = "0123456789abcdef";
-	if (maj == 1)
+	if (format == 1)
 		base = "0123456789ABCDEF";
-
-
 	ret = 0;
-	// display 0x
-	if (maj == 2) 
+	if (format == 2) 
         ret += write(1, "0x", 2);
-
-
-	// handle zero case
 	if(nbr == 0)
 	{
 		if (ft_putchar_fd('0', 1) != 1)
@@ -45,20 +53,7 @@ int	process_hex(uintptr_t nbr, int maj)
 		ret++;
 		return (ret);
 	}
-
-	// Conversion et Remplissage du buffer
-	i = 0;
-	uninbr = nbr;
-	while (uninbr > 0)
-	{
-		buffer[i++] = base[uninbr % 16];
-		uninbr /= 16;
-	}
-
-	// Affichage (le nombre de chars imprimés = i)
-	ret += i;
-	while (i-- > 0)
-		if (ft_putchar_fd(buffer[i], 1) != 1)
-			return (-1);
+	if(puthex(nbr, &ret, base) == -1)
+		return (-1);
 	return (ret);
 }

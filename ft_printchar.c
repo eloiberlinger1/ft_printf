@@ -6,15 +6,22 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 16:01:21 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 16:02:05 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/29 17:10:55 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	process_char(int value)
+
+int	process_char(va_list args)
 {
-	return (write(1, &value, 1));
+	int	c;
+	c = va_arg(args, int);
+	if (!c)
+		return (-1);
+	if (c == 0)
+		return(write(1, "\0", 1));
+	return (write(1, &c, 1));
 }
 
 int	process_str(va_list args)

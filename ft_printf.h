@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:24:46 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 16:02:01 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/29 16:48:24 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int	process_int(int value);
+int	process_int(va_list args);
 int	process_hex(uintptr_t nbr, int maj);
 int	process_str(va_list args);
-int	process_char(int value);
+int	process_char(va_list args);
 
 
 

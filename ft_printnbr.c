@@ -6,22 +6,27 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 16:00:31 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 16:01:43 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/29 15:50:55 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	process_int(int value)
+int	process_int(va_list args)
 {
 	char	*temp;
 	int		ret;
+	int		i;
 
-	temp = ft_itoa(value);
+	i = va_arg(args, int);
+	if (!i)
+		return (-1);
+	temp = ft_itoa(i);
 	if (!temp)
-		return (0);
-	ft_putstr_fd(temp, 1);
-	ret = ft_strlen(temp);
+		return (-1);
+	ret = ft_putstr_fd(temp, 1);
+	if (ret == -1)
+		return (-1);
 	free(temp);
 	return (ret);
 }

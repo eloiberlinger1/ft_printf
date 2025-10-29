@@ -6,30 +6,24 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:25:32 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 17:18:51 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/29 16:49:34 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-
-// int	pointer_entrypoint()
-// {
-	
-// }
 
 int	process(char s, va_list args)
 {
 	void	*value;
 
 	if (s == 'c')
-		return (process_char(va_arg(args, int)));
+		return (process_char(args));
 	else if (s == 's')
 		return (process_str(args));
 	else if (s == 'd' || s == 'i' || s == 'u')
-		return (process_int(va_arg(args, int)));
+		return (process_int(args));
 	else if (s == '%')
-		return (process_char('%'));
+		return (write(1, "%%", 1));
 	else if (s == 'p')
 	{
 		value = va_arg(args, void *);
