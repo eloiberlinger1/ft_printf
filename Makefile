@@ -31,7 +31,7 @@ test: fclean_all
 	make -C $(LIBFT_DIR) CFLAGS="$(DFLAGS) $(CFLAGS)" all
 	make -C $(LIBFT_DIR) CFLAGS="$(DFLAGS) $(CFLAGS)" bonus
 	$(MAKE) CFLAGS="$(DFLAGS) $(CFLAGS)" $(NAME)
-	$(CC) $(DFLAGS) $(CFLAGS) main.c $(NAME) $(LIBFT_L)
+	$(CC) $(DFLAGS) main.c $(NAME) $(LIBFT_L)
 
 fclean_all: clean
 	rm -f $(NAME) $(TEST_EXEC)
