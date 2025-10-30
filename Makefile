@@ -45,4 +45,4 @@ fclean: fclean_all
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re test fclean_all

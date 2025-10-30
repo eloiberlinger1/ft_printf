@@ -2,21 +2,14 @@
 
 int	main(void)
 {
-	void *test;
-	int test1;
-	char *str = NULL;
-    int i = 0;
-
-    while(i++ != 500)
-        test++;
+	int i = 0;
+	char test = 0;
 
 	printf("\nft_printf :\n");
-	ft_printf(str, NULL);
-	ft_printf("qqqqqqq%pqqqqqqqq", test);
+	ft_printf("qqqqqqq%cqqqqqqqq", test);
 
 	printf("\n\nprintf :\n");
-	printf(str, NULL);
-	printf("qqqqqqq%pqqqqqqqq", test);
+	printf("qqqqqqq%cqqqqqqqq", test);
 	printf("\n\n");
 
 	return (1);

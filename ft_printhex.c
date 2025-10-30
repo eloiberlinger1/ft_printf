@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 09:59:48 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/29 16:53:37 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:06:36 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,15 @@ format 0 = x
 format 1 = X
 format 2 = p
 */
-int	process_hex(uintptr_t nbr, int format)
+int	process_hex(va_list arg, int format)
 {
 	int			ret;
 	char		*base;
+	uintptr_t	nbr;
 
+	nbr = (uintptr_t)va_arg(arg, void *);
+	if (!nbr)
+		return(ft_putstr_fd("(nil)", 1));
 	base = "0123456789abcdef";
 	if (format == 1)
 		base = "0123456789ABCDEF";
