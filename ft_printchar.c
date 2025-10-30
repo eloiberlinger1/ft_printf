@@ -6,12 +6,11 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 16:01:21 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/29 18:04:30 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/30 12:23:08 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 int	process_char(va_list args)
 {
@@ -32,5 +31,3 @@ int	process_str(va_list args)
 		return (ft_putstr_fd("(null)", 1));
 	return (ft_putstr_fd(value, 1));
 }
-
-

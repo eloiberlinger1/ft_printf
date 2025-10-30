@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/28 16:03:49 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/30 12:22:59 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_printf(const char *c, ...)
 	va_list	args;
 	int		i;
 	int		len_tt;
-	int 	result;
+	int		result;
 
 	result = 0;
 	i = 0;
