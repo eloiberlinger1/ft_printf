@@ -5,16 +5,18 @@ DFLAGS = -g
 C_FILES =  ft_printf.c ft_utils.c ft_printhex.c ft_printchar.c ft_printnbr.c
 
 O_FILES = $(C_FILES:.c=.o)
-
-LIBFT = $(LIBFT_DIR)/libft.a
+LIBFT_D = libft/
+LIBFT_A = libft.a
+LIBFT_PATH = $(LIBFT_D)$(LIBFT_A)
 
 all: $(LIBFT_A) $(NAME)
 
 $(LIBFT_A):
-	make -C $(LIBFT_DIR) all
-	make -C $(LIBFT_DIR) bonus
+	make -C $(LIBFT_D) all
+	make -C $(LIBFT_D) bonus
 
-$(NAME) : $(O_FILES)
+$(NAME) : $(O_FILES) $(LIBFT_PATH)
+	cp $(LIBFT_PATH) $(NAME)
 	ar rcs $(NAME) $(O_FILES)
 
 %.o: %.c
@@ -23,18 +25,18 @@ $(NAME) : $(O_FILES)
 # test: fclean_all
 # 	@echo "--- compilation DEBUG (-g) ---"
 	
-# 	make -C $(LIBFT_DIR) CFLAGS="$(DFLAGS) $(CFLAGS)" all
-# 	make -C $(LIBFT_DIR) CFLAGS="$(DFLAGS) $(CFLAGS)" bonus
+# 	make -C $(LIBFT_D) CFLAGS="$(DFLAGS) $(CFLAGS)" all
+# 	make -C $(LIBFT_D) CFLAGS="$(DFLAGS) $(CFLAGS)" bonus
 # 	$(MAKE) CFLAGS="$(DFLAGS) $(CFLAGS)" $(NAME)
 # 	$(CC) $(DFLAGS) main.c $(NAME) $(LIBFT_L)
 
 fclean_all: clean
-	rm -f $(NAME) $(TEST_EXEC)
-	make -C $(LIBFT_DIR) fclean
+	rm -f $(NAME)
+	make -C $(LIBFT_D) fclean
 
 clean:
 	rm -f $(O_FILES) $(O_BONUS_FILES)
-	make -C $(LIBFT_DIR) clean
+	make -C $(LIBFT_D) clean
 
 fclean: fclean_all
 
