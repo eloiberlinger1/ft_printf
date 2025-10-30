@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 16:01:21 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/30 12:23:08 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/30 15:22:53 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,29 @@
 int	process_char(va_list args)
 {
 	int	c;
+	int	result;
 
 	c = va_arg(args, int);
-	if (!c)
+	result = write(1, &c, 1);
+	if (result == -1)
 		return (-1);
-	return (write(1, &c, 1));
+	return (1);
 }
 
 int	process_str(va_list args)
 {
 	char	*value;
+	int		result;
 
 	value = va_arg(args, char *);
 	if (!value)
-		return (ft_putstr_fd("(null)", 1));
-	return (ft_putstr_fd(value, 1));
+	{
+		result = ft_putstr_fd("(null)", 1);
+		if (result == -1)
+			return (-1);
+	}
+	result = (ft_putstr_fd(value, 1));
+	if (result == -1)
+		return (-1);
+	return (result);
 }

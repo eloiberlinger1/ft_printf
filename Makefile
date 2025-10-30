@@ -2,7 +2,7 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wextra -Wall -Werror
 DFLAGS = -g
-C_FILES =  ft_printf.c ft_utils.c ft_printhex.c ft_printchar.c ft_printnbr.c
+C_FILES =  ft_printf.c ft_printhex.c ft_printchar.c ft_printnbr.c
 
 O_FILES = $(C_FILES:.c=.o)
 LIBFT_D = libft/

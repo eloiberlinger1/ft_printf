@@ -6,11 +6,31 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/30 12:22:59 by eberling         ###   ########.fr       */
+/*   Updated: 2025/10/30 15:37:55 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	process(char s, va_list args)
+{
+	if (s == 'c')
+		return (process_char(args));
+	else if (s == 's')
+		return (process_str(args));
+	else if (s == 'd' || s == 'i' || s == 'u')
+		return (process_int(args));
+	else if (s == '%')
+		return (write(1, "%%", 1));
+	else if (s == 'p')
+		return (process_hex(args, 2));
+	else if (s == 'x')
+		return (process_hex(args, 0));
+	else if (s == 'X')
+		return (process_hex(args, 1));
+	return (0);
+}
+
 
 int	ft_printf(const char *c, ...)
 {
@@ -27,16 +47,16 @@ int	ft_printf(const char *c, ...)
 	va_start(args, c);
 	while (c[i] != '\0')
 	{
-		if (c[i] == '%')
-			len_tt = process(c[++i], args);
+		if (c[i] == '%' && c[i + 1])
+			len_tt += process(c[++i], args);
 		else
-			len_tt += write(1, &c[i], 1);
-		if (len_tt <= 0)
+			result = write(1, &c[i], 1);
+		if (result == -1)
 			return (-1);
-		result += len_tt;
-		len_tt = 0;
+		len_tt += result;
 		i++;
 	}
 	va_end(args);
-	return (0);
+	return (len_tt);
 }
+
