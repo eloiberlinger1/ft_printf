@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 09:59:48 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/30 16:04:57 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/03 10:39:47 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,10 @@ int	puthex(uintptr_t uninbr, char *base)
 	}
 	while (i-- > 0)
 	{
-		temp = ft_putchar_fd(buffer[i], 1);
-		if (temp == -1)
+		if (ft_putchar_fd(buffer[i], 1) == -1)
 			return (-1);
-		result += temp;
-		temp = 0;
-	}
+		result++;
+		}
 	return (result);
 }
 int handle_null()
