@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 09:59:48 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/03 10:44:12 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:54:43 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ int	puthex(uintptr_t uninbr, char *base)
 
 	i = 0;
 	result = 0;
+	if (uninbr == 0)
+	{
+		if (ft_putchar_fd('0', 1) == -1)
+			return (-1);
+		return (1);
+	}
 	while (uninbr > 0)
 	{
 		buffer[i++] = base[uninbr % 16];
@@ -30,13 +36,14 @@ int	puthex(uintptr_t uninbr, char *base)
 		if (ft_putchar_fd(buffer[i], 1) == -1)
 			return (-1);
 		result++;
-		}
+	}
 	return (result);
 }
-int handle_null()
+
+int	handle_null(void)
 {
-	int		result;
-	
+	int	result;
+
 	result = 0;
 	result = ft_putstr_fd("(nil)", 1);
 	if (result == -1)
@@ -63,7 +70,7 @@ int	process_hex(va_list arg, int format)
 		base = "0123456789ABCDEF";
 	if (format == 2)
 		ret = write(1, "0x", 2);
-	if(ret == -1)
+	if (ret == -1)
 		return (-1);
 	if (nbr == 0)
 	{

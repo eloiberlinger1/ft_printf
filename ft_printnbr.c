@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 16:00:31 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/03 11:31:02 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/03 12:01:23 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ int	process_int(va_list args)
 
 	i = va_arg(args, int);
 	if (!i)
-		return (-1);
+	{
+		ret = ft_putstr_fd("0", 1);
+		if (ret == -1)
+			return (-1);
+		return (ret);
+	}
 	temp = ft_itoa(i);
 	if (!temp)
 		return (-1);
@@ -44,6 +49,7 @@ static int	print_uint(unsigned int nbr)
 		ret = print_uint(nbr / 10);
 		if (ret == -1)
 			return (-1);
+		len += ret;
 	}
 	c = (nbr % 10) + '0';
 	ret = ft_putchar_fd(c, 1);
@@ -56,7 +62,15 @@ static int	print_uint(unsigned int nbr)
 int	process_uint(va_list args)
 {
 	int	u;
+	int	ret;
 
 	u = va_arg(args, unsigned int);
+	if (!u)
+	{
+		ret = ft_putstr_fd("0", 1);
+		if (ret == -1)
+			return (-1);
+		return (ret);
+	}
 	return (print_uint(u));
 }
