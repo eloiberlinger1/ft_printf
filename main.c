@@ -3,13 +3,13 @@
 int	main(void)
 {
 	int i = 0;
-	char test[] = "eloi";
+	int	test = -5;
 
-	int y = printf("asdasdasd\n");
-	printf("%d\n", y);
+	int y = printf("\n");
+	printf("%u\n", test);
 
-	int x = ft_printf("%s", test);
-	printf("%d\n", x);
+	int x = ft_printf("%u\n", test);
+	printf("%u\n", test);
 	// printf("\n\nprintf :\n");
 	// printf("%c", test);
 	// printf("\n\n");

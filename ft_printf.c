@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/03 10:46:17 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:03:45 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ int	process(char s, va_list args)
 		return (process_char(args));
 	else if (s == 's')
 		return (process_str(args));
-	else if (s == 'd' || s == 'i' || s == 'u')
+	else if (s == 'd' || s == 'i')
 		return (process_int(args));
+	else if (s == 'u')
+		return (process_uint(args));
 	else if (s == '%')
 		return (write(1, "%%", 1));
 	else if (s == 'p')

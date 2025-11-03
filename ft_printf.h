@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:24:46 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/30 15:38:16 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:07:56 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 
 int	process_int(va_list args);
+int process_uint(va_list args);
 int	process_hex(va_list arg, int format);
 int	process_str(va_list args);
 int	process_char(va_list args);

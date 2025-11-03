@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 16:00:31 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/30 15:37:37 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:29:37 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,32 @@ int	process_int(va_list args)
 		return (-1);
 	free(temp);
 	return (ret);
+}
+
+int	process_uint(va_list args)
+{
+	int	u;
+
+	u = va_arg(args, unsigned int);
+	return (print_uint(u));
+}
+
+static int	print_uint(unsigned int nbr)
+{
+	int	c;
+	int	len;
+	int	ret;
+
+	if (nbr >= 10)
+	{
+		ret = print_uint(nbr / 10);
+		if (ret == -1)
+			return (-1);
+	}
+	c = (nbr % 10) + '0';
+	ret = ft_putchar_fd(c, 1);
+	if (ret == -1)
+		return (-1);
+	len += ret;
+	return (len);
 }
