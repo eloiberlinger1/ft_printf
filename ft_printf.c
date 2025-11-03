@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/10/30 15:37:55 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/03 10:43:30 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int	ft_printf(const char *c, ...)
 	i = 0;
 	len_tt = 0;
 	if (c == NULL)
-		return (0);
+		return (-1);
 	va_start(args, c);
 	while (c[i] != '\0')
 	{
 		if (c[i] == '%' && c[i + 1])
-			len_tt += process(c[++i], args);
+			result += process(c[++i], args);
 		else
 			result = write(1, &c[i], 1);
 		if (result == -1)

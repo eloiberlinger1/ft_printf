@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 09:59:48 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/03 10:39:47 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/03 10:44:12 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	puthex(uintptr_t uninbr, char *base)
 {
 	int		i;
-	int		temp;
 	int		result;
 	char	buffer[17];
 
