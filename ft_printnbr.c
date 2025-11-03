@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 16:00:31 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/03 11:29:37 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:31:02 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,6 @@ int	process_int(va_list args)
 	return (ret);
 }
 
-int	process_uint(va_list args)
-{
-	int	u;
-
-	u = va_arg(args, unsigned int);
-	return (print_uint(u));
-}
 
 static int	print_uint(unsigned int nbr)
 {
@@ -45,6 +38,7 @@ static int	print_uint(unsigned int nbr)
 	int	len;
 	int	ret;
 
+	len = 0;
 	if (nbr >= 10)
 	{
 		ret = print_uint(nbr / 10);
@@ -57,4 +51,12 @@ static int	print_uint(unsigned int nbr)
 		return (-1);
 	len += ret;
 	return (len);
+}
+
+int	process_uint(va_list args)
+{
+	int	u;
+
+	u = va_arg(args, unsigned int);
+	return (print_uint(u));
 }
