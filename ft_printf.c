@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/04 17:13:34 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:24:30 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,16 @@ int	process(char s, va_list args)
 	return (0);
 }
 
-int	ft_printf(const char *c, ...)
+static int	runthough(const char *c, va_list args)
 {
-	va_list	args;
-	int		i;
-	int		len_tt;
-	int		result;
+	int	result;
+	int	len_tt;
+	int	i;
 
-	i = 0;
 	len_tt = 0;
-	if (c == NULL)
-		return (-1);
-	va_start(args, c);
+	i = 0;
 	while (c[i] != '\0')
 	{
-		// Not correct, 
-		// si il y a un espace apres le pourcent il faut l'afficher et retourner le nombre de caracteres imprimes
-		// si juste un pourcent a la fin o ne l'affiche pas et retourne -1/
-		// si il y a un format inconnu on l'affiche simplement le %<caractere inocnnu>
 		if (c[i] == '%')
 		{
 			if (c[i + 1] && c[i + 1] != ' ')
@@ -67,7 +59,19 @@ int	ft_printf(const char *c, ...)
 		len_tt += result;
 		i++;
 	}
-	va_end(args);
 	return (len_tt);
 }
 
+int	ft_printf(const char *c, ...)
+{
+	va_list	args;
+	int		len_tt;
+
+	len_tt = 0;
+	if (c == NULL)
+		return (-1);
+	va_start(args, c);
+	len_tt = runthough(c, args);
+	va_end(args);
+	return (len_tt);
+}
