@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 16:00:31 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/03 12:01:23 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:25:27 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	process_int(va_list args)
 	free(temp);
 	return (ret);
 }
-
 
 static int	print_uint(unsigned int nbr)
 {

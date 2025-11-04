@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 09:59:48 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/04 14:42:10 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:26:47 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,7 @@ int	handle_null(void)
 		return (-1);
 	return (result);
 }
-/*
-format 0 = x
-format 1 = X
-format 2 = p
-*/
+
 int	process_hex(va_list arg, int format)
 {
 	int				ret;
@@ -77,10 +73,10 @@ int	process_hex(va_list arg, int format)
 
 int	process_ptr(va_list arg)
 {
-	int				ret;
-	char			*base;
-	uintptr_t		nbr;
-	
+	int			ret;
+	char		*base;
+	uintptr_t	nbr;
+
 	base = "0123456789abcdef";
 	ret = 0;
 	nbr = (uintptr_t)va_arg(arg, void *);
@@ -97,5 +93,4 @@ int	process_ptr(va_list arg)
 	}
 	ret += puthex(nbr, base);
 	return (ret);
-
 }
