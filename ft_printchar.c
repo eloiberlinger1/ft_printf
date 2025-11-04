@@ -49,7 +49,7 @@ int	process_unknown(char f)
 	int	tt;
 
 	tt = 0;
-	result = write(1, "\%", 1);
+	result = write(1, "%%", 1);
 	if (result == -1)
 		return (-1);
 	tt += result;
