@@ -55,9 +55,9 @@ int	process_hex(va_list arg, int format)
 {
 	int				ret;
 	char			*base;
-	unsigned long	nbr;
+	unsigned int	nbr;
 
-	nbr = va_arg(arg, unsigned long);
+	nbr = va_arg(arg, unsigned int);
 	if (nbr == 0)
 	{
 		if (ft_putchar_fd('0', 1) == -1)
@@ -67,7 +67,7 @@ int	process_hex(va_list arg, int format)
 	base = "0123456789abcdef";
 	if (format == 1)
 		base = "0123456789ABCDEF";
-	ret = puthex(nbr, base);
+	ret = puthex((uintptr_t)nbr, base);
 	return (ret);
 }
 
