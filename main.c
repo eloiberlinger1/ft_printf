@@ -15,8 +15,10 @@ int main(void)
     unsigned_num = -99898;
     ptr = &num;
     printf("%%c\n");
-    my_count = ft_printf("ft_printf: [%k]\n", c);
-    printf_count = printf("printf   : [%k]\n", c);
+    my_count = ft_printf("sdfdfg%\n", c);
+    printf_count = printf("sdfdfg%", c);
+    printf("my: %d | pr: %d\n\n", my_count, printf_count);
+
     // printf("returnvalue ft_printf: %d | printf: %d\n\n", my_count, printf_count);
     // printf("%%s\n");
     // my_count = ft_printf("ft_printf: [%s]\n", str);
