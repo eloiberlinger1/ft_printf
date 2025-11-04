@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:13:30 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/04 14:34:56 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:13:34 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ int	process(char s, va_list args)
 	return (0);
 }
 
-static int	my_isspace(char c)
-{
-	return (c == '\n' || c == ' ' || c == '\t'|| c == '\v'|| c == '\f'|| c == '\r');
-}
-
 int	ft_printf(const char *c, ...)
 {
 	va_list	args;
@@ -54,9 +49,13 @@ int	ft_printf(const char *c, ...)
 	va_start(args, c);
 	while (c[i] != '\0')
 	{
+		// Not correct, 
+		// si il y a un espace apres le pourcent il faut l'afficher et retourner le nombre de caracteres imprimes
+		// si juste un pourcent a la fin o ne l'affiche pas et retourne -1/
+		// si il y a un format inconnu on l'affiche simplement le %<caractere inocnnu>
 		if (c[i] == '%')
-		{			
-			if (c[i + 1] && !my_isspace(c[i + 1]))
+		{
+			if (c[i + 1] && c[i + 1] != ' ')
 				result = process(c[++i], args);
 			else
 				return (-1);

@@ -14,9 +14,8 @@ int main(void)
     num = -3456;
     unsigned_num = -99898;
     ptr = &num;
-    printf("%%c\n");
-    my_count = ft_printf("sdfdfg%\n", c);
-    printf_count = printf("sdfdfg%", c);
+    my_count = ft_printf("ssdfsdf%\t", num);
+    printf_count = printf("ssdfsdf%\t", num);
     printf("my: %d | pr: %d\n\n", my_count, printf_count);
 
     // printf("returnvalue ft_printf: %d | printf: %d\n\n", my_count, printf_count);
