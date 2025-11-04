@@ -57,7 +57,7 @@ int	process_hex(va_list arg, int format)
 	char			*base;
 	unsigned long	nbr;
 
-	nbr = (unsigned int)va_arg(arg, unsigned long);
+	nbr = va_arg(arg, unsigned long);
 	if (nbr == 0)
 	{
 		if (ft_putchar_fd('0', 1) == -1)
