@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 16:01:21 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/03 11:59:56 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/04 14:08:32 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,21 @@ int	process_str(va_list args)
 	if (result == -1)
 		return (-1);
 	return (result);
+}
+
+int	process_unknown(char f)
+{
+	int	result;
+	int	tt;
+
+	tt = 0;
+	result = write(1, "\%", 1);
+	if (result == -1)
+		return (-1);
+	tt += result;
+	result = write(1, &f, 1);
+	if (result == -1)
+		return (-1);
+	tt += result;
+	return (tt);
 }

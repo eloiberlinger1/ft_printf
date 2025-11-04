@@ -6,7 +6,7 @@
 /*   By: eberling <eberling@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 09:59:48 by eberling          #+#    #+#             */
-/*   Updated: 2025/11/03 11:54:43 by eberling         ###   ########.fr       */
+/*   Updated: 2025/11/04 09:55:01 by eberling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,39 @@ format 2 = p
 */
 int	process_hex(va_list arg, int format)
 {
-	int			ret;
-	char		*base;
-	uintptr_t	nbr;
+	int				ret;
+	char			*base;
+	unsigned int	nbr;
 
-	nbr = (uintptr_t)va_arg(arg, void *);
+	nbr = (unsigned int)va_arg(arg, unsigned int);
 	ret = 0;
 	if (!nbr)
 		return (handle_null());
 	base = "0123456789abcdef";
 	if (format == 1)
 		base = "0123456789ABCDEF";
-	if (format == 2)
-		ret = write(1, "0x", 2);
+	if (nbr == 0)
+	{
+		if (ft_putchar_fd('0', 1) == -1)
+			return (-1);
+		return (1);
+	}
+	ret += puthex(nbr, base);
+	return (ret);
+}
+
+int	process_ptr(va_list arg)
+{
+	int				ret;
+	char			*base;
+	uintptr_t		nbr;
+	
+	base = "0123456789abcdef";
+	ret = 0;
+	nbr = (uintptr_t)va_arg(arg, void *);
+	if (!nbr)
+		return (handle_null());
+	ret = write(1, "0x", 2);
 	if (ret == -1)
 		return (-1);
 	if (nbr == 0)
@@ -80,4 +100,5 @@ int	process_hex(va_list arg, int format)
 	}
 	ret += puthex(nbr, base);
 	return (ret);
+
 }
