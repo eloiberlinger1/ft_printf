@@ -22,14 +22,6 @@ $(NAME) : $(O_FILES) $(LIBFT_PATH)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-test: fclean_all
-	@echo "--- compilation DEBUG (-g) ---"
-	
-	make -C $(LIBFT_D) CFLAGS="$(DFLAGS) $(CFLAGS)" all
-	make -C $(LIBFT_D) CFLAGS="$(DFLAGS) $(CFLAGS)" bonus
-	$(MAKE) CFLAGS="$(DFLAGS) $(CFLAGS)" $(NAME)
-	$(CC) $(DFLAGS) main.c $(NAME) $(LIBFT_L)
-
 fclean_all: clean
 	rm -f $(NAME)
 	make -C $(LIBFT_D) fclean
